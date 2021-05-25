@@ -1,0 +1,28 @@
+<h1 class="is-size-1" style="padding-bottom: 20px;">
+  <%= link_to 'Closure table index', comments_path %>
+</h1>
+
+<div class="comments_container">
+  <div style="padding: 0 20px;">
+    <h2 class="is-size-2">コメント</h2>
+    <section>
+      <h3 class="is-size-3">コメント一覧</h3>
+      <p>
+        <%= link_to comment_path(@comment.id) do %>
+          <%= render 'row', row: @comment %>
+        <% end %>
+      </p>
+
+      <%#= render 'replies', comment: @comment %>
+      <% if @comment.replies.blank? || @comment.replies.last.persisted? %>
+        <p style="text-align: right;">
+          <%= link_to 'repry', new_reply_comment_path(@comment.id) %>
+        </p>
+      <% else %>
+        <div style="padding-bottom: 10px;">
+          <%= render 'form', comment: @comment.replies.last, url: reply_comment_path, focus: true %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>
