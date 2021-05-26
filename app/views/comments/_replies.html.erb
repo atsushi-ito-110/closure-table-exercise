@@ -1,9 +1,10 @@
-
 <% comment.replies.each do |reply| %>
   <% if reply.persisted? %>
-    <p style="padding-left: 10%;">
+    <div style="padding-left: 5%;">
       <%= render 'row', row: reply %>
-      <%= render 'replies', comment: reply %>
-    </p>
+      <div style="padding-left: 5%;">
+        <%= render 'replies', comment: reply %>
+      </div>
+    </div>
   <% end %>
 <% end %>

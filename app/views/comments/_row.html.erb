@@ -1,5 +1,7 @@
 <span>
   <%= row.id %>
-  <%= row.body %>
+  <%= link_to comment_path(row.id) do %>
+    <%= row.body %>
+  <% end %>
   <%= time_ago_in_words(row.created_at) %>
 </span>
