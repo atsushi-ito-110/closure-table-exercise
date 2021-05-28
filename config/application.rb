@@ -14,7 +14,7 @@ module ClosureTableExercise
     config.active_record.default_timezone = :local
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
       unless instance.kind_of?(ActionView::Helpers::Tags::Label)
-        "#{html_tag}<p class=\"help is-danger\">#{instance.error_message.first}</p>".html_safe
+        "<div class=\"error\">#{html_tag}</div><p class=\"help is-danger\">#{instance.error_message.first}</p>".html_safe
       end
     end
     # Settings in config/environments/* take precedence over those specified here.
