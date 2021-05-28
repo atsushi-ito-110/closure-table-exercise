@@ -1,33 +1,28 @@
-<h1 class="is-size-1" style="padding-bottom: 20px;">
+<h1 class="is-size-1 pb20">
   <%= link_to 'Closure table index', comments_path %>
 </h1>
 
 <div class="comments_container">
   <h2 class="is-size-2">コメント</h2>
   <section style="padding: 10px 0;">
-    <%= render 'form', comment: @comment, url: comments_path %>
+    <%= render 'form', reply: @comment, url: comments_path %>
   </section>
 
   <section>
     <h3 class="is-size-3">コメント一覧</h3>
     <% @comments.each do |comment| %>
-
       <div>
         <%= render 'row', row: comment %>
       </div>
-
       <%= render 'replies', comment: comment %>
-      <% if comment.replies.blank? || comment.replies.last.persisted? %>
-        <p>
-          <%= link_to new_reply_comment_path(comment.id) do %>
-            <i class="far fa-comment"></i>
-          <% end %>
-        </p>
-      <% else %>
-        <div>
-          <%= render 'form', comment: comment.replies.last, url: reply_comment_path, focus: true %>
-        </div>
-      <% end %>
+      <div>
+        <%= render 'reply_form',
+          comment: comment,
+          reply: comment.replies.last,
+          url: reply_comment_path(comment),
+          focus: true
+        %>
+      </div>
     <% end %>
   </section>
 </div>

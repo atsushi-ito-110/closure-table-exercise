@@ -1,9 +1,9 @@
 <% comment.replies.each do |reply| %>
   <% if reply.persisted? %>
-    <div style="padding-left: 5%;">
+    <div class="pl5">
       <%= render 'row', row: reply %>
       <% if local_assigns[:recursive].present? && local_assigns[:recursive] == true %>
-        <div style="padding-left: 5%;">
+        <div class="pl5">
           <%= render 'replies', comment: reply, recursive: true %>
         </div>
       <% end %>
