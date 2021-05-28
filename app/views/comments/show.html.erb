@@ -7,13 +7,11 @@
     <h2 class="is-size-2">コメント</h2>
     <section>
       <h3 class="is-size-3">コメント一覧</h3>
-      <p>
-        <%= link_to comment_path(@comment.id) do %>
-          <%= render 'row', row: @comment %>
-        <% end %>
-      </p>
+      <div>
+        <%= render 'row', row: @comment %>
+      </div>
 
-      <%#= render 'replies', comment: @comment %>
+      <%= render 'replies', comment: @comment, recursive: true %>
       <% if @comment.replies.blank? || @comment.replies.last.persisted? %>
         <p style="text-align: right;">
           <%= link_to 'repry', new_reply_comment_path(@comment.id) %>

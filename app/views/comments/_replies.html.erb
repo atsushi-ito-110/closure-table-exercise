@@ -2,9 +2,11 @@
   <% if reply.persisted? %>
     <div style="padding-left: 5%;">
       <%= render 'row', row: reply %>
-      <div style="padding-left: 5%;">
-        <%= render 'replies', comment: reply %>
-      </div>
+      <% if local_assigns[:recursive].present? && local_assigns[:recursive] == true %>
+        <div style="padding-left: 5%;">
+          <%= render 'replies', comment: reply, recursive: true %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 <% end %>
