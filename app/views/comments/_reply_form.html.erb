@@ -1,0 +1,9 @@
+<% if comment.replies.blank? || comment.replies.last.persisted? %>
+  <p>
+    <%= link_to new_reply_comment_path(comment.id) do %>
+      <i class="far fa-comment"></i>
+    <% end %>
+  </p>
+<% else %>
+  <%= render 'form', reply: comment.replies.last, url: url, focus: true %>
+<% end %>
