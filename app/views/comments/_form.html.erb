@@ -1,6 +1,10 @@
 <%= form_with model: comment, local: true, url: url do |f| %>
   <div>
-    <%= f.text_field :body, placeholder: 'Enterで送信します', style: 'width: 100%;', autofocus: local_assigns[:focus].nil? ? false : true %>
+    <%= f.text_field :body,
+      placeholder: 'Enterで送信します',
+      style: 'width: 100%;',
+      autofocus: local_assigns[:focus].nil? ? false : true
+    %>
   </div>
   <div>
     <%= f.submit :submit, style: 'display: none;' %>
