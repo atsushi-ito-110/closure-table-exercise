@@ -32,13 +32,12 @@ class CommentsController < ApplicationController
   end
 
   def reply
-    @comment = Comment.new
-    parent = Comment.find(params[:id])
-    parent.replies.build(comment_params)
-    if parent.save
+    @comment = Comment.find(params[:id])
+    @comment.replies.build(comment_params)
+    if @comment.save
       redirect_to comments_path
     else
-      render :index
+      render :show
     end
   end
 

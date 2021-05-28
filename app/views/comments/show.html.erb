@@ -11,19 +11,13 @@
     </div>
 
     <%= render 'replies', comment: @comment, recursive: true %>
-    <% if @comment.replies.blank? || @comment.replies.last.persisted? %>
-      <p style="text-align: right;">
-        <%= link_to 'repry', new_reply_comment_path(@comment.id) %>
-      </p>
-    <% else %>
-      <div class="pb10">
-        <%= render 'reply_form',
-          comment: @comment,
-          reply: @comment.replies.last,
-          url: reply_comment_path(@comment),
-          focus: true
-        %>
-      </div>
-    <% end %>
+    <div class="pb10">
+      <%= render 'reply_form',
+        comment: @comment,
+        reply: @comment.replies.last,
+        url: reply_comment_path(@comment),
+        focus: true
+      %>
+    </div>
   </section>
 </div>
